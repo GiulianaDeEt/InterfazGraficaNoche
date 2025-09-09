@@ -4,33 +4,35 @@
  */
 package proyectoexplicacion;
 
-class Puma {
-    public static String especie = "Puma concolor";
+// CLASE HIJA - hereda de Animal
+class Puma extends Animal {
+    private double velocidadMaxima;
+    private double territorioKm2;
     
-    public String nombre;
-    public int edad;
-    public double peso;
-    public double velocidadMaxima; // km/h
-    public double territorioKm2;
-    
-    public Puma() {
-        this.nombre = "";
-        this.edad = 0;
-        this.peso = 0.0;
-        this.velocidadMaxima = 0.0;
-        this.territorioKm2 = 0.0;
-    }
-    
-    public void comer() {
-        System.out.println(this.nombre + " devora su presa con sus poderosas mandibulas");
+    public Puma(String nombre, int edad, double peso, double velocidadMaxima, double territorioKm2) {
+        super(nombre, edad, peso, "Puma concolor");
+        this.velocidadMaxima = velocidadMaxima;
+        this.territorioKm2 = territorioKm2;
     }
     
     public void cazar() {
-        System.out.println(this.nombre + " acecha sigilosamente a su presa");
+        System.out.println(nombre + " acecha sigilosamente a su presa");
     }
     
     public void saltar() {
-        System.out.println(this.nombre + " salta agilmente entre las rocas");
+        System.out.println(nombre + " salta agilmente entre las rocas");
+    }
+    
+    public void correr() {
+        System.out.println(nombre + " corre a " + velocidadMaxima + " km/h");
+    }
+    
+    @Override
+    public void comer() {
+        System.out.println(nombre + " devora su presa con sus poderosas mandibulas");
+    }
+    
+    public double getVelocidadMaxima() {
+        return velocidadMaxima;
     }
 }
-

@@ -4,32 +4,34 @@
  */
 package proyectoexplicacion;
 
-class Pinguino {
-    public static String especie = "Spheniscus humboldti";
+// CLASE HIJA - hereda de Animal
+class Pinguino extends Animal {
+    private double altura;
+    private boolean puedeVolar;
+    private double velocidadNado;
     
-    public String nombre;
-    public int edad;
-    public double altura; // en metros
-    public boolean puedeVolar;
-    public double velocidadNado; // km/h
-    
-    public Pinguino() {
-        this.nombre = "";
-        this.edad = 0;
-        this.altura = 0.0;
-        this.puedeVolar = false;
-        this.velocidadNado = 0.0;
-    }
-    
-    public void comer() {
-        System.out.println(this.nombre + " come pescado fresco");
+    public Pinguino(String nombre, int edad, double peso, double altura, double velocidadNado) {
+        super(nombre, edad, peso, "Spheniscus humboldti");
+        this.altura = altura;
+        this.puedeVolar = false; // Los pingüinos no vuelan
+        this.velocidadNado = velocidadNado;
     }
     
     public void nadar() {
-        System.out.println(this.nombre + " nada rápidamente bajo el agua");
+        System.out.println(nombre + " nada rapidamente a " + velocidadNado + " km/h bajo el agua");
     }
     
     public void deslizar() {
-        System.out.println(this.nombre + " se desliza sobre su barriga en el hielo");
+        System.out.println(nombre + " se desliza sobre su barriga en el hielo");
     }
+    /**
+    @Override
+    public void comer() {
+        System.out.println(nombre + " come pescado fresco");
+    }
+    
+    public double getVelocidadNado() {
+        return velocidadNado;
+    }
+    * */
 }
