@@ -2,44 +2,67 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package proyectoexplicacion;
+package proyectoexplicacion3.gettersetter;
 
-// CLASE HIJA - hereda de Animal
 class Jirafa extends Animal {
-    // Atributos específicos de la jirafa
+    // Atributos privados específicos
     private double altura;
     private String colorManchas;
     
-    // Constructor que llama al constructor padre
     public Jirafa(String nombre, int edad, double peso, double altura, String colorManchas) {
-        super(nombre, edad, peso, "Giraffa camelopardalis"); // Llamada al constructor padre
-        this.altura = altura;
-        this.colorManchas = colorManchas;
+        super(nombre, edad, peso, "Giraffa camelopardalis");
+        this.setAltura(altura);
+        this.setColorManchas(colorManchas);
     }
     
-    // Métodos específicos de la jirafa
+    // Getters específicos
+    public double getAltura() {
+        return altura;
+    }
+    
+    public String getColorManchas() {
+        return colorManchas;
+    }
+    
+    // Setters con validaciones específicas
+    public void setAltura(double altura) {
+        if (altura >= 1.0 && altura <= 6.0) {
+            this.altura = altura;
+        } else {
+            System.out.println("Error: La altura de una jirafa debe estar entre 1 y 6 metros");
+            this.altura = 4.0; // altura promedio
+        }
+    }
+    
+    public void setColorManchas(String colorManchas) {
+        if (colorManchas != null && !colorManchas.trim().isEmpty()) {
+            this.colorManchas = colorManchas.toLowerCase().trim();
+        } else {
+            this.colorManchas = "marron"; // color por defecto
+        }
+    }
+    
     public void estirarCuello() {
-        System.out.println(nombre + " estira su largo cuello para alcanzar las hojas más altas");
+        System.out.println(getNombre() + " estira su cuello de " + altura + " metros para alcanzar las hojas mas altas");
     }
     
-    public void caminar() {
-        System.out.println(nombre + " camina elegantemente con sus largas patas");
-    }
-    /**
-    // Sobrescribir método heredado
     @Override
     public void comer() {
-        System.out.println(nombre + " esta comiendo hojas de acacia desde las copas de los arboles");
+        System.out.println(getNombre() + " esta comiendo hojas de acacia desde " + altura + " metros de altura");
     }
     
     @Override
     public void dormir() {
-        System.out.println(nombre + " duerme de pie, como hacen las jirafas");
+        System.out.println(getNombre() + " duerme de pie, como hacen las jirafas de " + altura + " metros");
     }
     
-    // Getter específico
-    public double getAltura() {
-        return altura;
+    @Override
+    public void hacerSonido() {
+        System.out.println(getNombre() + " es muda");
     }
-    * */
+    
+    // Método que demuestra uso de getters
+    public void mostrarDetalles() {
+        System.out.println("🦒 " + getNombre() + " - Altura: " + altura + "m, Manchas: " + colorManchas);
+    }
 }
