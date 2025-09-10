@@ -4,36 +4,42 @@
  */
 package proyectoexplicacion;
 
-class Jirafa {
-    // Atributos de clase (static)
-    public static String especie = "Giraffa camelopardalis";
+// CLASE HIJA - hereda de Animal
+class Jirafa extends Animal {
+    // Atributos específicos de la jirafa
+    private double altura;
+    private String colorManchas;
     
-    // Atributos de instancia
-    public String nombre;
-    public int edad;
-    public double altura; // en metros
-    public double peso;   // en kg
-    public String colorManchas;
-    
-    // Constructor simple (sin parámetros)
-    public Jirafa() {
-        this.nombre = "";
-        this.edad = 0;
-        this.altura = 0.0;
-        this.peso = 0.0;
-        this.colorManchas = "marron";
+    // Constructor que llama al constructor padre
+    public Jirafa(String nombre, int edad, double peso, double altura, String colorManchas) {
+        super(nombre, edad, peso, "Giraffa camelopardalis"); // Llamada al constructor padre
+        this.altura = altura;
+        this.colorManchas = colorManchas;
     }
     
-    // Métodos
-    public void comer() {
-        System.out.println(this.nombre + " esta comiendo hojas de acacia desde las copas de los arboles");
+    // Métodos específicos de la jirafa
+    public void estirarCuello() {
+        System.out.println(nombre + " estira su largo cuello para alcanzar las hojas más altas");
     }
     
     public void caminar() {
-        System.out.println(this.nombre + " camina elegantemente con sus largas patas");
+        System.out.println(nombre + " camina elegantemente con sus largas patas");
+    }
+    /**
+    // Sobrescribir método heredado
+    @Override
+    public void comer() {
+        System.out.println(nombre + " esta comiendo hojas de acacia desde las copas de los arboles");
     }
     
+    @Override
     public void dormir() {
-        System.out.println(this.nombre + " duerme de pie, como hacen las jirafas");
+        System.out.println(nombre + " duerme de pie, como hacen las jirafas");
     }
+    
+    // Getter específico
+    public double getAltura() {
+        return altura;
+    }
+    * */
 }

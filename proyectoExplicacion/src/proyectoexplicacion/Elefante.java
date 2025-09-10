@@ -4,32 +4,37 @@
  */
 package proyectoexplicacion;
 
-class Elefante {
-    public static String especie = "Loxodonta africana";
+// CLASE HIJA - hereda de Animal
+class Elefante extends Animal {
+    private double longitudTrompa;
+    private boolean tieneColmillos;
     
-    public String nombre;
-    public int edad;
-    public double peso;
-    public double longitudTrompa; // en metros
-    public boolean tieneColmillos;
-    
-    public Elefante() {
-        this.nombre = "";
-        this.edad = 0;
-        this.peso = 0.0;
-        this.longitudTrompa = 0.0;
-        this.tieneColmillos = true;
+    public Elefante(String nombre, int edad, double peso, double longitudTrompa, boolean tieneColmillos) {
+        super(nombre, edad, peso, "Loxodonta africana");
+        this.longitudTrompa = longitudTrompa;
+        this.tieneColmillos = tieneColmillos;
     }
     
-    public void comer() {
-        System.out.println(this.nombre + " usa su trompa para agarrar hierba y frutas");
-    }
-    
-    public void caminar() {
-        System.out.println(this.nombre + " camina pesadamente haciendo temblar el suelo");
+    public void usarTrompa() {
+        System.out.println(nombre + " usa su trompa de " + longitudTrompa + " metros");
     }
     
     public void duchar() {
-        System.out.println(this.nombre + " se ducha tirandose agua con su trompa");
+        System.out.println(nombre + " se ducha tirandose agua con su trompa");
     }
+    
+    public void ducharA(Animal otro) {
+        System.out.println(nombre + " tira agua sobre " + otro.nombre + " con su trompa");
+    }
+    
+    @Override
+    public void comer() {
+        System.out.println(nombre + " usa su trompa para agarrar hierba y frutas");
+    }
+    
+    public double getLongitudTrompa() {
+        return longitudTrompa;
+    }
+    
 }
+
