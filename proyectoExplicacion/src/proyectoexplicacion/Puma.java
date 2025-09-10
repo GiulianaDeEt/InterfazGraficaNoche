@@ -4,6 +4,7 @@
  */
 package proyectoexplicacion;
 
+// CLASES HIJAS - DEBEN implementar todos los métodos abstractos
 class Puma extends Animal {
     private double velocidadMaxima;
     private double territorioKm2;
@@ -14,22 +15,16 @@ class Puma extends Animal {
         this.setTerritorioKm2(territorioKm2);
     }
     
-    // Getters
-    public double getVelocidadMaxima() {
-        return velocidadMaxima;
-    }
+    // Getters y Setters específicos
+    public double getVelocidadMaxima() { return velocidadMaxima; }
+    public double getTerritorioKm2() { return territorioKm2; }
     
-    public double getTerritorioKm2() {
-        return territorioKm2;
-    }
-    
-    // Setters
     public void setVelocidadMaxima(double velocidadMaxima) {
         if (velocidadMaxima >= 30 && velocidadMaxima <= 100) {
             this.velocidadMaxima = velocidadMaxima;
         } else {
             System.out.println("Error: La velocidad debe estar entre 30 y 100 km/h");
-            this.velocidadMaxima = 65.0; // velocidad promedio
+            this.velocidadMaxima = 65.0;
         }
     }
     
@@ -38,26 +33,38 @@ class Puma extends Animal {
             this.territorioKm2 = territorioKm2;
         } else {
             System.out.println("Error: El territorio debe estar entre 10 y 200 km2");
-            this.territorioKm2 = 50.0; // territorio promedio
+            this.territorioKm2 = 50.0;
         }
     }
     
-    public void cazar() {
-        System.out.println(getNombre() + " acecha sigilosamente en sus " + territorioKm2 + " km² de territorio");
-    }
-    
-    public void correr() {
-        System.out.println(getNombre() + " corre a " + velocidadMaxima + " km/h");
-    }
-    
+    // IMPLEMENTACIÓN OBLIGATORIA de métodos abstractos
     @Override
     public void comer() {
-        System.out.println(getNombre() + " devora su presa con sus poderosas mandibulas");
+        System.out.println("   " + nombre + " devora su presa con sus poderosas mandibulas");
     }
     
     @Override
     public void hacerSonido() {
-        System.out.println(getNombre() + " grunie amenazadoramente: '¡GRRRRR!'");
+        System.out.println("   " + nombre + " grunie amenazadoramente: 'GRRRRR!'");
+    }
+    
+    @Override
+    public void moverse() {
+        System.out.println("   " + nombre + " se mueve sigilosamente por su territorio de " + territorioKm2 + " km2");
+    }
+    
+    @Override
+    public String getTipoHabitat() {
+        return "montanias y bosques";
+    }
+    
+    // Métodos específicos del puma
+    public void cazar() {
+        System.out.println(nombre + " acecha sigilosamente a su presa en " + territorioKm2 + " km2 de territorio");
+    }
+    
+    public void correr() {
+        System.out.println(nombre + " corre a " + velocidadMaxima + " km/h persiguiendo a su presa");
     }
     
     public void mostrarDetalles() {
