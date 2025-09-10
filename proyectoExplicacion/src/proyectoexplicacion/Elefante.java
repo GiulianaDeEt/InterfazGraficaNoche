@@ -4,37 +4,62 @@
  */
 package proyectoexplicacion;
 
-// CLASE HIJA - hereda de Animal
+// CLASES HIJAS - DEBEN implementar todos los métodos abstractos
 class Elefante extends Animal {
     private double longitudTrompa;
     private boolean tieneColmillos;
     
     public Elefante(String nombre, int edad, double peso, double longitudTrompa, boolean tieneColmillos) {
         super(nombre, edad, peso, "Loxodonta africana");
-        this.longitudTrompa = longitudTrompa;
+        this.setLongitudTrompa(longitudTrompa);
         this.tieneColmillos = tieneColmillos;
     }
     
-    public void usarTrompa() {
-        System.out.println(nombre + " usa su trompa de " + longitudTrompa + " metros");
+    // Getters y Setters específicos
+    public double getLongitudTrompa() { return longitudTrompa; }
+    public boolean isTieneColmillos() { return tieneColmillos; }
+    
+    public void setLongitudTrompa(double longitudTrompa) {
+        if (longitudTrompa >= 0.5 && longitudTrompa <= 3.0) {
+            this.longitudTrompa = longitudTrompa;
+        } else {
+            System.out.println("Error: La trompa debe medir entre 0.5 y 3 metros");
+            this.longitudTrompa = 1.5;
+        }
     }
     
-    public void duchar() {
-        System.out.println(nombre + " se ducha tirandose agua con su trompa");
-    }
-    
-    public void ducharA(Animal otro) {
-        System.out.println(nombre + " tira agua sobre " + otro.nombre + " con su trompa");
+    // IMPLEMENTACIÓN OBLIGATORIA de métodos abstractos
+    @Override
+    public void comer() {
+        System.out.println("   " + nombre + " usa su trompa de " + longitudTrompa + "m para agarrar hierba y frutas");
     }
     
     @Override
-    public void comer() {
-        System.out.println(nombre + " usa su trompa para agarrar hierba y frutas");
+    public void hacerSonido() {
+        System.out.println("   " + nombre + " barita fuertemente: 'PFFFRRRR!'");
     }
     
-    public double getLongitudTrompa() {
-        return longitudTrompa;
+    @Override
+    public void moverse() {
+        System.out.println("   " + nombre + " camina pesadamente haciendo temblar el suelo");
     }
     
+    @Override
+    public String getTipoHabitat() {
+        return "sabana africana";
+    }
+    
+    // Métodos específicos del elefante
+    public void usarTrompa() {
+        System.out.println(nombre + " usa su trompa de " + longitudTrompa + " metros para diferentes tareas");
+    }
+    
+    public void duchar() {
+        System.out.println(nombre + " se ducha rociandose agua con su trompa");
+    }
+    
+    public void mostrarDetalles() {
+        String colmillos = tieneColmillos ? "con colmillos" : "sin colmillos"; //version resumida de in if-else
+        System.out.println(getNombre() + " - Trompa: " + longitudTrompa + "m, " + colmillos);
+    }
 }
-
