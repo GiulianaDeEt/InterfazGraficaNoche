@@ -10,7 +10,7 @@ Conceptos: interfaces, implements, contrato, polimorfismo por sobrecarga,
 múltiples implementaciones, reglas de negocio
 */
 // CLASE ABSTRACTA - Animal (misma de antes pero expandida)
-abstract class Animal {
+public abstract class Animal {
     protected String nombre;
     protected int edad;
     protected double peso;
@@ -125,6 +125,15 @@ abstract class Animal {
                           getEdad() + " anios, " + getPeso() + " kg, Energia: " + energia + "%");
     }
     
+    public void setEnergia(int energia) {
+    if (energia < 0) {
+        this.energia = 0;
+    } else if (energia > 100) {
+        this.energia = 100;
+    } else {
+        this.energia = energia;
+    }
+}
     // Metodos abstractos (deben implementarse)
     public abstract void comer();
     public abstract void hacerSonido();
